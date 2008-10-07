@@ -1,7 +1,6 @@
 module PolishRuby
   module IncludesAll
-    def includes_all?(*ary)
-      ary = ary.flatten if ary.length == 1 && ary.first.is_a?(Array)
+    def includes_all?(ary)
       # & is intersection
       (self & ary) == ary
     end
