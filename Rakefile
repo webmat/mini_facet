@@ -5,14 +5,14 @@ require 'rake/rdoctask'
 desc 'Default: run unit tests.'
 task :default => :test
 
-desc 'Test the polishing_ruby.'
+desc 'Test mini_facet.'
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
   t.pattern = 'test/**/*_test.rb'
   t.verbose = true
 end
 
-desc 'Generate documentation for polishing_ruby plugin.'
+desc 'Generate documentation for mini_facet.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'MiniFacet'
