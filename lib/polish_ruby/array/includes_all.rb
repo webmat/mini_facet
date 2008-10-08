@@ -1,4 +1,4 @@
-module PolishRuby
+module MiniFacet
   module IncludesAll
     def includes_all?(ary)
       # & is intersection
