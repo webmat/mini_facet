@@ -1,6 +1,6 @@
 # Can be included in any class that responds to #each. 
 # Such as Array.
-module CountDistinct
+module MiniFacet::CountDistinct
   def count_distinct(purge_smaller_than=0)
     h={}
     self.each {|e|
@@ -10,5 +10,5 @@ module CountDistinct
   end
 end
 
-Array.send :include, CountDistinct
+Array.send :include, MiniFacet::CountDistinct
 
