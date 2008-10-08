@@ -17,8 +17,8 @@ spec = Gem::Specification.new do |s|
 
   s.has_rdoc              = true
   
-  s.test_files            = Dir['test/**/*']
-  s.files                 = Dir['**/*'].reject{|f| f =~ /\Apkg|\Acoverage|\.gemspec\Z/}
+  s.test_files            = Dir['test/**/*'].reject{|f| f =~ /test\/my_test_helper.rb/}
+  s.files                 = Dir['**/*'].reject{|f| f =~ /\Apkg|\Acoverage|\.gemspec\Z|test\/my_test_helper.rb/}
   
   s.require_path          = "lib"
 end

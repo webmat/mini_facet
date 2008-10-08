@@ -74,7 +74,6 @@ files:
 - tasks/test.rake
 - test
 - test/integration
-- test/my_test_helper.rb
 - test/test_helper.rb
 - test/unit
 - test/unit/array
@@ -112,7 +111,6 @@ specification_version: 2
 summary: Adding a few basic, useful things to Ruby.
 test_files: 
 - test/integration
-- test/my_test_helper.rb
 - test/test_helper.rb
 - test/unit
 - test/unit/array
