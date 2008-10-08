@@ -13,7 +13,7 @@ spec = Gem::Specification.new do |s|
   s.authors               = ['Mathieu Martin']
   s.email                 = "webmat@gmail.com"
   s.homepage              = "http://github.com/webmat/mini_facet"
-  s.rubyforge_project     = 'grb'
+  s.rubyforge_project     = 'mini_facet'
 
   s.has_rdoc              = true
   
