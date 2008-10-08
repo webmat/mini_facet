@@ -15,7 +15,6 @@ module MiniFacet::Extract
   #  h = {:bob=>'Marley',:mom=>'Barley'}
   #  h.extract(:bob) #=> {:bob=>'Marley'}
   #  h.extract(:bob, :mom) #=> {:bob=>'Marley',:mom=>'Barley'}
-  #  h.extract([:bob, :mom]) #=> {:bob=>'Marley',:mom=>'Barley'}
   #  h.extract(:sos) #=> {}
   
   def extract(*args, &block)
@@ -23,17 +22,15 @@ module MiniFacet::Extract
       extract_block(&block)
     elsif args[0].is_a? Proc
       extract_block(&args[0])
-    elsif args.size == 0
-      raise ArgumentError, "extract requires either an array of keys, a block or a proc"
     else
-      extract_keys(args)
+      extract_keys(*args)
     end
   end
   
   private
     def extract_keys(*keys)
       extracted = self.class.new #Can therefore be included in any hash-like container
-      keys.flatten.each { |k| extracted[k] = self[k] if self.include?(k) }
+      keys.each { |k| extracted[k] = self[k] if self.include?(k) }
       extracted
     end
     
