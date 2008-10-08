@@ -105,7 +105,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
   version: 
 requirements: []
 
-rubyforge_project: grb
+rubyforge_project: mini_facet
 rubygems_version: 1.2.0
 signing_key: 
 specification_version: 2
