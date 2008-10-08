@@ -9,10 +9,10 @@ class IncludesAllTest < Test::Unit::TestCase
     end
   end
   
-  test_includes_all :array => [],             :includes_all? => [], :returns => true
+  test_includes_all :array => [],             :includes_all? => [], :returns => true          # Same as Ruby's Set
   test_includes_all :array => [],             :includes_all? => [:a], :returns => false
                                               
-  test_includes_all :array => [:a],           :includes_all? => [], :returns => true
+  test_includes_all :array => [:a],           :includes_all? => [], :returns => true          # Same as Ruby's Set
   test_includes_all :array => [:a],           :includes_all? => [:a], :returns => true
   test_includes_all :array => [:a],           :includes_all? => [:a, :a], :returns => false
   test_includes_all :array => [:a, :a],       :includes_all? => [:a], :returns => true
