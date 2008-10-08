@@ -20,6 +20,7 @@ class IncludesAllTest < Test::Unit::TestCase
   
   test_includes_all :array => [:a, :b],       :includes_all? => [:a], :returns => true
   test_includes_all :array => [:a, :b],       :includes_all? => [:a, :b], :returns => true
+  test_includes_all :array => [:a, :b],       :includes_all? => [:b, :a], :returns => true
   
   test_includes_all :array => [[:a], [:b]],   :includes_all? => [[:a]], :returns => true
   test_includes_all :array => [[:a], [:b]],   :includes_all? => [[:a], [:b]], :returns => true
