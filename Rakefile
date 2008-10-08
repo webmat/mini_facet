@@ -1,22 +1,14 @@
-require 'rake'
-require 'rake/testtask'
-require 'rake/rdoctask'
+require 'rubygems'
 
-desc 'Default: run unit tests.'
+require 'rake'
+
+HERE = File.dirname(__FILE__)
+windows = (RUBY_PLATFORM =~ /win32|cygwin/) rescue nil
+SUDO = windows ? "" : "sudo"
+
+require "#{HERE}/lib/mini_facet"
+Dir['tasks/**/*.rake'].each { |rake| load rake }
+
+desc 'Default: run all tests.'
 task :default => :test
 
-desc 'Test mini_facet.'
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
-end
-
-desc 'Generate documentation for mini_facet.'
-Rake::RDocTask.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'MiniFacet'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README.markdown')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
