@@ -1,7 +1,7 @@
 module MiniFacet::Extract
-  # Hash#extract(*keys) => Hash
   # Hash#extract([keys]) => Hash
   # Hash#extract{|k,v| predicate } => Hash
+  # Hash#extract(proc) => Hash
   # 
   # Returns a new Hash that contains only the k,v pairs where the k was
   # specified in the keys array.
@@ -13,22 +13,28 @@ module MiniFacet::Extract
   # 
   # Examples:
   #  h = {:bob=>'Marley',:mom=>'Barley'}
-  #  h.extract(:bob) #=> {:bob=>'Marley'}
-  #  h.extract(:bob, :mom) #=> {:bob=>'Marley',:mom=>'Barley'}
-  #  h.extract(:sos) #=> {}
+  #  h.extract([:bob])            #=> {:bob=>'Marley'}
+  #  h.extract([:bob, :mom])      #=> {:bob=>'Marley',:mom=>'Barley'}
+  #  h.extract([:sos])            #=> {}
+  #
+  #  h.extract{|k,v| v =~ /Mar/}  #=>{:bob=>'Marley}
   
   def extract(*args, &block)
+    # Despide the *args, extract doesn't accept a splatted array.
+    # It's really either an array or some form of block/proc.
     if block_given?
       extract_block(&block)
     elsif args[0].is_a? Proc
       extract_block(&args[0])
+    elsif args[0].is_a? Array
+      extract_keys(args[0])
     else
-      extract_keys(*args)
+      raise ArgumentError, "extract requires either an array of keys, a block or a proc"
     end
   end
   
   private
-    def extract_keys(*keys)
+    def extract_keys(keys)
       extracted = self.class.new #Can therefore be included in any hash-like container
       keys.each { |k| extracted[k] = self[k] if self.include?(k) }
       extracted
