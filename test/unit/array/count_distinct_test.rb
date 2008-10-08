@@ -1,6 +1,6 @@
 require "#{ File.dirname(__FILE__) }/../test_helper"
 
-class ArrayExtensionsTest < Test::Unit::TestCase
+class ArrayCountDistinctTest < Test::Unit::TestCase
   context "Array#count_distinct" do
     should "work with empty arrays" do
       assert_equal({}, [].count_distinct)

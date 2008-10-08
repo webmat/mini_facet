@@ -1,6 +1,6 @@
 require "#{ File.dirname(__FILE__) }/../test_helper"
 
-class IncludesAllTest < Test::Unit::TestCase
+class ArrayIncludesAllTest < Test::Unit::TestCase
   def self.test_includes_all(options)
     context "#{ options[:array].inspect }.includes_all?(#{ options[:includes_all?].inspect })" do
       should "return #{options[:returns]}" do
