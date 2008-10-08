@@ -12,9 +12,12 @@ Example
     # Will include everything
     # Including piece by piece is coming, but is not yet done
     
-    Right now, mini\_facet adds the following:
-    Hash#extract
-    Hash#split
+    Right now, mini\_facet only adds the following:
+    Hash#extract([])      #=> Hash
+    Hash#extract(&block)  #=> Hash
+    Hash#extract(proc)    #=> Hash
+    Hash#split(&block)    #=> Hash(block true), Hash(block false)
+    Hash#split(proc)      #=> Hash(proc true), Hash(proc false)
     Array#count_distinct
     Array#includes_all? #and include_all?
 
